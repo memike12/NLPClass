@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# You may find this shell script helpful.
+
+java -mx400m -cp classes \
+  usna.assignments.LanguageModelTester \
+  -model usna.langmodel.LinearInterpolation \
+  -data      /courses/nchamber/nlp/lab2/data \
+  -train     europarl-train.sent.txt \
+  -test      europarl-test.sent.txt \
+  -check     true \
+  -showguesses       false \
+  -jumble       true \
+  -baselines true \
+  -generate  true \
+  $@

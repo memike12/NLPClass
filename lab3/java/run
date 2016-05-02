@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# You may find this shell script helpful.
+
+java -mx400m -cp classes \
+  usna.author.TrainTest \
+  -data      /courses/nchamber/nlp/lab3/data \
+  $@

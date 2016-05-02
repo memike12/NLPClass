@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DATA=miniTest
+#DATA=genia
+
+PARSER=usna.parser.BaselineParser
+#PARSER=usna.parser.CKYParser
+
+java -server -mx500m -cp classes \
+  usna.parser.ParserTester \
+  -path /courses/nchamber/nlp/lab6/data \
+  -parser $PARSER \
+  -data $DATA \
+  $@

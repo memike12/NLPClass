@@ -1,0 +1,5 @@
+import httplib
+
+bloomcert = './bloomberg/bloomberg.crt'
+mycert = './bloomberg/bitcamp_spring_058.cert'
+mykey = './bloomberg/bitcamp_spring_058.key'

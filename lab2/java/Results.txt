@@ -1,0 +1,65 @@
+BigramModel.java
+        Training set perplexity:      72.9165
+        Test set perplexity:          ∞
+        Enron Jumble Perplexity:      ∞
+        Enron Word Error Rate:        0.7439
+        Enron Percent Correct:        1.7241%
+
+        Enron WER Baselines: 
+         Worst Path:                  0.9692
+         Random Path:                 0.7609
+
+TrigramModel.java
+        Training set perplexity:      9.3528
+        Test set perplexity:          ∞
+        Enron Jumble Perplexity:      ∞
+        Enron Word Error Rate:        0.7505
+        Enron Percent Correct:        0.8621%
+
+        Enron WER Baselines: 
+         Worst Path:                  0.9692
+         Random Path:                 0.7609
+
+SmoothedBigram.java
+        Training set perplexity:      75.8399
+        Test set perplexity:          529.3127
+        Enron Jumble Perplexity:      5623.4145
+        Enron Word Error Rate:        0.1955
+        Enron Percent Correct:        65.5172%
+
+        Enron WER Baselines: 
+         Worst Path:                  0.9692
+         Random Path:                 0.7609
+
+SmoothedTrigram.java
+      Training set perplexity:      9.6154
+      Test set perplexity:          5182.6071
+      Enron Jumble Perplexity:      36487.1177
+      Enron Word Error Rate:        0.4295
+      Enron Percent Correct:        29.3103%
+
+      Enron WER Baselines: 
+       Worst Path:                  0.9692
+       Random Path:                 0.7609
+  
+LinearInterpolation.java
+      Training set perplexity:      24.4152
+      Test set perplexity:          228.5791
+      Enron Jumble Perplexity:      1313.4870
+      Enron Word Error Rate:        0.1982
+      Enron Percent Correct:        62.0690%
+
+      Enron WER Baselines: 
+       Worst Path:                  0.9692
+       Random Path:                 0.7609
+
+The differences in error were due to how far back in the sentence we
+look. Smoothing does amazing for the Enron Percent Correct % and that
+is because we are able to generate things that we haven't seen
+before. TrigramModel was pretty bad becasue it only would guess things
+based on bigrams it's seen, which is fairly small. I couldn't get the
+LinearInterpolation any higher than SmoothedBigram in terms of %
+correct, though I tried many different combinations. 
+  
+
+

@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# You may find this shell script helpful.
+#
+
+tmp=/tmp
+subdir=sentiment-data
+data=/courses/nchamber/nlp/lab4/data
+
+
+# These statements copy the data directory above to the local machine.
+# The tweets are 100's of MBs, so we don't want our Java code
+# constantly making NFS calls. Copy it all into /tmp/sentiment-data.
+cpdata=$data
+if [ -d $tmp ]; then
+    # If our /tmp directory does not exist, create it and copy data.
+    if [ ! -d $tmp/$subdir ]; then
+        mkdir $tmp/$subdir
+	chmod 777 $tmp/$subdir
+
+        # If mkdir succeeded, copy data.
+        if [ -d $tmp/$subdir ]; then
+            echo "Copying data to your local machine."
+            echo "This is a one-time operation. Please wait."
+            echo "We're saving the NFS for everyone!"
+            cpdata=$tmp/$subdir
+            cp -R $data/* $cpdata/
+	    chmod -R a+r $cpdata
+        fi
+    fi
+
+    # Set the /tmp path.
+    if [ -d $tmp/$subdir ]; then
+        cpdata=$tmp/$subdir
+    fi
+fi
+
+
+# Run the program.
+echo "Data directory: $cpdata"
+java -mx1500m -cp classes usna.sentiment.TrainTest \
+  -data      $cpdata \
+  $@

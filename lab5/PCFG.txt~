@@ -1,0 +1,10 @@
+1)      VP -> VB NP count = 15248 probability = .493031979
+        VP -> VBD VBN NP count = 563 probability = .018204158
+        VP -> VB VBG NP count = 267 probability = .008633233
+        VP -> VBD NP count = 14448 probability = .467164613
+        VP -> VBN VBN NP count = 29 probability = .000937692
+        VP -> VBD VBG NP count = 125 probability = 0.004041776
+        VP -> MD VB NP count = 247 probability = 0.007986549
+
+
+3) Verb is jump

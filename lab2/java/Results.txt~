@@ -1,0 +1,24 @@
+BigramModel.java
+        Training set perplexity:      72.9165
+        Test set perplexity:          ∞
+        Enron Jumble Perplexity:      ∞
+        Enron Word Error Rate:        0.7439
+        Enron Percent Correct:        1.7241%
+
+        Enron WER Baselines: 
+         Worst Path:                  0.9692
+         Random Path:                 0.7609
+
+TrigramModel.java
+        Training set perplexity:      9.3528
+        Test set perplexity:          ∞
+        Enron Jumble Perplexity:      ∞
+        Enron Word Error Rate:        0.7505
+        Enron Percent Correct:        0.8621%
+
+        Enron WER Baselines: 
+         Worst Path:                  0.9692
+         Random Path:                 0.7609
+
+
+

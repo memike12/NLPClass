@@ -1,0 +1,84 @@
+import mysql.connector
+from mysql.connector import errorcode
+import os
+
+
+try:
+  cnx = mysql.connector.connect(user='m162166',
+                                password = 'm162166',
+                                host = 'zee.cs.usna.edu',
+                                database='m164488')
+
+#check for errors
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with your user name or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+  print("<p>Fix your code or Contact system admin</p></body></html>")
+  quit()
+
+#create cursor to send queries
+cursor = cnx.cursor()
+
+
+#This prints out all the symbols we have in the prices table
+query = "SELECT DISTINCT symbol FROM price"
+
+try:
+  cursor.execute(query)
+except mysql.connector.Error as err:
+      #for DEBUG only we'll print the error and statement- we should print some generic message instead for production site
+  print(err)	
+
+row = cursor.fetchall()
+#a cursor always returns a tuple so you need to go to an index
+for symbol in row:
+  #print(symbol[0])
+  
+  #if you want to write a file
+  #os.system('touch ' + str(row[0]) + '.txt')
+
+  #this prints out all of the data we have on a stock
+  query2 = "SELECT * FROM price WHERE symbol='"+ symbol[0]+"' AND (date_ex BETWEEN '2008-01-01' AND '2008-12-31');"
+  try:
+    secondResult = cursor.execute(query2)
+  except mysql.connector.Error as err:
+      #for DEBUG only we'll print the error and statement- we should   print some generic message instead for production site
+    print(err)	
+
+  row2 = cursor.fetchall()
+  #a cursor always returns a tuple so you need to go to an index
+  x=0
+  volSum = 0
+  volAvg = 0
+  for (symbol, date_ex, open_p, high_p, low_p, close_p, volume,  adj_close_p) in row2:
+  #print("{}, {:%d %b %Y}, {}, {}, {}, {}, {}, {}".format(symbol, date_ex, float(open_p), float(high_p), float(low_p), float(close_p), volume, float(adj_close_p)))
+    x+=1
+    volSum+=volume
+    if volume > 0:
+      volAvg = volSum/x
+      if volume > 30*volAvg: 
+        print(symbol + " " + str("%.2f" % (float(volume)/float(volAvg+.001)*100)) + "% Spike in volume on {:%Y%m%d}".format(date_ex, volume, volAvg))
+      #elif volume < .6*volAvg:
+        #print(str("%.2f" % (float(volume)/float(volAvg)*100)) + "% of average volume on {:%d %b %Y}".format(date_ex, volume, volAvg))
+      #if x > 10000:
+        #exit()
+
+
+exit()
+
+
+#close cursor since we don't use it anymore
+cursor.close()
+
+#commit the transaction
+#cnx.commit()  #this is really important otherwise all changes lost
+#close connection
+cnx.close()
+
+
+
+

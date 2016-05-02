@@ -1,0 +1,24 @@
+1)      VP -> VB NP count = 15248 probability = .493031979
+        VP -> VBD VBN NP count = 563 probability = .018204158
+        VP -> VB VBG NP count = 267 probability = .008633233
+        VP -> VBD NP count = 14448 probability = .467164613
+        VP -> VBN VBN NP count = 29 probability = .000937692
+        VP -> VBD VBG NP count = 125 probability = 0.004041776
+        VP -> MD VB NP count = 247 probability = 0.007986549
+
+3) Verb is jump 
+	VP -> VB NP count = 2766 probability = 0.811381637
+        VP -> VBD VBN NP count = 20 probability = 0.005866823
+        VP -> VB VBG NP count = 32 probability = 0.009386917
+        VP -> VBD NP count = 540 probability = 0.158404224
+        VP -> VBN VBN NP count = 2 probability = 0.000586682
+        VP -> VBD VBG NP count = 32 probability = 0.009386917
+        VP -> MD VB NP count = 17 probability = 0.0049868
+
+4)
+	What did John pick up?
+	Where am I going tomorrow?
+	Who left John?
+	Who did Susan leave?
+	Did we think about eating the burritos?
+

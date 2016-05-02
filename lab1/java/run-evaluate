@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# You may find this shell script helpful.
+
+
+if [ $# -ne "2" ]
+then
+    echo "Usage: 'run-evaluate <guesses-file> <gold-file>'"
+    exit 1
+fi
+
+java -cp classes usna.segment.Evaluate $@
